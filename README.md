@@ -9,3 +9,10 @@ For pretrained image and text encoder, you should download the files from [pretr
 
 # Traning our algorithm
 For traning you can run `python main.py --cfg cfg/bird_attn4.yml --gpu 0 --optim adam_np` if you want to train with adam_nm optimizer. Otherwise, you can run `python main.py --cfg cfg/bird_attn4.yml --gpu 0` 
+
+# Evaluation
+
+For generating the fake images from the validation dataset, run `python main.py --cfg cfg/eval_bird.yml --gpu 0`. You can also save your own sentence in "./data/birds/example_captions.txt", and set the B_VALIDATION to False in eval_bird.yaml and then run `python main.py --cfg cfg/eval_bird.yml --gpu 0` to get the generated images. 
+
+To evaluate the FID score, you can run the following command: 
+`python fid_score.py --gpu 0 --batch-size 50 --path1 real_images_bird --path2 fake_images_bird`
